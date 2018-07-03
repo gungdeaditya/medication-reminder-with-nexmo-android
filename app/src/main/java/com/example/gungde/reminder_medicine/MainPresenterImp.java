@@ -24,8 +24,8 @@ public class MainPresenterImp implements MainPresenter{
     @Override
     public void sendNotif(String time, String phone) {
         AndroidNetworking.post("https://rest.nexmo.com/sms/json")
-                .addBodyParameter("api_key", "XXXXXX")
-                .addBodyParameter("api_secret", "XXXXXXX")
+                .addBodyParameter("api_key", "XXXX")
+                .addBodyParameter("api_secret", "XXXXXX")
                 .addBodyParameter("to", phone)
                 .addBodyParameter("from", "Reminder App")
                 .addBodyParameter("text", "Sudah pukul "+ time + ", kabari temanmu untuk meminum obat!!")
