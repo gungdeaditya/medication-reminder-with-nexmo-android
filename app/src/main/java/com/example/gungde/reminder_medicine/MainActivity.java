@@ -113,9 +113,8 @@ public class MainActivity extends BaseActivity implements Main {
         return inst;
     }
 
-    public void onSuccess() {
-        showSuccessSnackBar("YEY");
-//        presenter.sendNotif(edtTime1.getText().toString(), edtPhone.getText().toString());
+    public void onSuccess(String time) {
+        presenter.sendNotif(time, edtPhone.getText().toString());
     }
 
     private void setTimePicker(final EditText et) {
@@ -140,6 +139,7 @@ public class MainActivity extends BaseActivity implements Main {
         calendar.set(Calendar.MINUTE, Integer.parseInt(time.substring(3)));
         calendar.set(Calendar.SECOND, 0);
         Intent myIntent = new Intent(MainActivity.this, AlarmReceiver.class);
+        myIntent.putExtra("TIME", time);
         pendingIntent = PendingIntent.getBroadcast(MainActivity.this, 0, myIntent, 0);
         alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
     }

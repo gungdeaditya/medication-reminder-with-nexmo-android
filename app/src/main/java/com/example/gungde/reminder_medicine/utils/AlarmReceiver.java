@@ -30,6 +30,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
                 AlarmService.class.getName());
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
-        inst.onSuccess();
+        String time = intent.getExtras().getString("TIME");
+        inst.onSuccess(time);
     }
 }
